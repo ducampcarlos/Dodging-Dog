@@ -171,7 +171,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.056929767}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -181,7 +181,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9.28, y: 1.28}
+  m_Size: {x: 9.28, y: 1.1661404}
   m_EdgeRadius: 0
 --- !u!212 &35179124
 SpriteRenderer:
@@ -669,6 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588160687}
   - component: {fileID: 588160686}
+  - component: {fileID: 588160690}
   - component: {fileID: 588160685}
   - component: {fileID: 588160689}
   - component: {fileID: 588160688}
@@ -809,7 +810,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.94, y: 4.53}
+    oldSize: {x: 2.94, y: 4.57}
     newSize: {x: 2.94, y: 4.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -830,7 +831,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 1
   m_AngularDamping: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -844,6 +845,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &588160690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588160684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0b378e1368a7e4b9d416016a2e7539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

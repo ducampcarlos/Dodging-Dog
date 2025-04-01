@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     [SerializeField] GameObject gameOverPanel;
 
+    [SerializeField] PlayerController playerController;
+
     private void Awake()
     {
         if (instance == null)
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         obstacleSpawner.StopSpawning();
         gameOverPanel.SetActive(true);
+        playerController.enabled = false;
     }
 
     public void IncrementScore()

@@ -6,11 +6,18 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] float speed = 5f;
     SpriteRenderer sr;
+    Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+
+    void OnDisable()
+    {
+        anim.SetBool("IsWalking", false);
     }
 
     void Update()
@@ -20,7 +27,12 @@ public class PlayerController : MonoBehaviour
         if (!Mathf.Approximately(velocityX, 0)) // Prevent flipping when stopping
         {
             sr.flipX = velocityX < 0;
+            anim.SetBool("IsWalking", true);
         }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }   
     }
 
     private void FixedUpdate()

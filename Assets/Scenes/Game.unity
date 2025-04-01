@@ -1833,6 +1833,7 @@ MonoBehaviour:
   obstacleSpawner: {fileID: 641182228}
   scoreText: {fileID: 1776474350}
   gameOverPanel: {fileID: 1673627933}
+  playerController: {fileID: 588160690}
 --- !u!4 &1335986403
 Transform:
   m_ObjectHideFlags: 0

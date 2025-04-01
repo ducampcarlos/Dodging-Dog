@@ -13,6 +13,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     Coroutine spawnCoroutine;
 
+    private void Start()
+    {
+        StartSpawning();
+    }
+
     void StartSpawning()
     {
         spawnCoroutine = StartCoroutine(StartSpawn());

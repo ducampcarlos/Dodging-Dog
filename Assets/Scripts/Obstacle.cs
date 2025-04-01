@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Obstacle : MonoBehaviour
 {
@@ -25,7 +26,14 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            GameManager.instance.IncrementScore();
+
             Destroy(gameObject);
+        }
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.GameOver();
         }
     }
 }

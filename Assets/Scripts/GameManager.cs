@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -53,5 +54,15 @@ public class GameManager : MonoBehaviour
             score++;
             scoreText.text = score.ToString();
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

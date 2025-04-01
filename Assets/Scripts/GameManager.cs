@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ObstacleSpawner obstacleSpawner;
 
     int score = 0;
+    [SerializeField] TextMeshProUGUI scoreText;
+
     bool gameOver = false;
 
     private void Awake()
@@ -43,7 +46,10 @@ public class GameManager : MonoBehaviour
 
     public void IncrementScore()
     {
-        if(!gameOver)
+        if (!gameOver)
+        {
             score++;
+            scoreText.text = score.ToString();
+        }
     }
 }

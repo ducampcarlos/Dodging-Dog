@@ -27,21 +27,22 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 moveDirection = Vector2.zero;
 
-#if UNITY_STANDALONE || UNITY_EDITOR
-        // PC Controls (Mouse)
-        if (Mouse.current.leftButton.isPressed)
-        {
-            float mouseX = Mouse.current.position.x.ReadValue();
-            moveDirection = (mouseX < Screen.width / 2f) ? Vector2.left : Vector2.right;
-        }
-#elif UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_EDITOR                              
         // Android Controls (Touch)
         if (Touchscreen.current.primaryTouch.press.isPressed)
         {
             float touchX = Touchscreen.current.primaryTouch.position.x.ReadValue();
             moveDirection = (touchX < Screen.width / 2f) ? Vector2.left : Vector2.right;
         }
+#elif UNITY_STANDALONE || UNITY_EDITOR
+        // PC Controls (Mouse)
+        if (Mouse.current.leftButton.isPressed)
+        {
+            float mouseX = Mouse.current.position.x.ReadValue();
+            moveDirection = (mouseX < Screen.width / 2f) ? Vector2.left : Vector2.right;
+        }
 #endif
+
 
         rb.linearVelocity = moveDirection * speed;
     }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     bool gameOver = false;
+    [SerializeField] GameObject gameOverPanel;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         obstacleSpawner.StopSpawning();
+        gameOverPanel.SetActive(true);
     }
 
     public void IncrementScore()

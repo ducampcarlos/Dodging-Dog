@@ -963,6 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   deathParticle: {fileID: 1558757897}
+  tapScreen: {fileID: 8300000, guid: 8e4fb0711a1224043a39330a5e3801b2, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1078,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 1230387751490760155, guid: f5dfd30a6aedc1b48ba0b0678c67232e, type: 3}
+  poolSize: 10
   spawnRate: 1
+  spawnRateDecrease: 0.05
+  minSpawnRate: 0.3
   minX: {fileID: 1500331115}
   maxX: {fileID: 668231920}
 --- !u!4 &641182229

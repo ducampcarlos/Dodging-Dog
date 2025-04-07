@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Obstacle : MonoBehaviour
 {
@@ -10,7 +9,13 @@ public class Obstacle : MonoBehaviour
 
     private void OnEnable()
     {
+        CancelInvoke(); // Por si quedó colgado
         Invoke("PlaySawSound", 1.1f);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke(); // Limpia el Invoke cuando se recicla
     }
 
     void PlaySawSound()
@@ -25,16 +30,14 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.CompareTag("Ground"))
         {
             GameManager.instance.IncrementScore();
-
             AudioManager.Instance.PlaySFX(sawHit);
-
-            Destroy(gameObject);
+            gameObject.SetActive(false); // Reutilizable
         }
 
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             AudioManager.Instance.PlaySFX(playerDeath);
             GameManager.instance.GameOver();

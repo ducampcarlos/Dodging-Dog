@@ -1,35 +1,30 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("Pooling")]
-    [SerializeField] GameObject obstaclePrefab;
-    [SerializeField] int poolSize = 10;
-    private List<GameObject> obstaclePool;
-
-    [Header("Spawn Settings")]
+    [SerializeField] GameObject[] obstaclePrefabs;
     [SerializeField] float spawnRate = 1f;
-    [SerializeField] float spawnRateDecrease = 0.05f;
-    [SerializeField] float minSpawnRate = 0.3f;
     [SerializeField] Transform minX;
     [SerializeField] Transform maxX;
+    [SerializeField] int poolSize = 20;
 
     private Coroutine spawnCoroutine;
+    private List<GameObject> obstaclePool = new List<GameObject>();
 
     private void Start()
     {
-        CreatePool();
+        InitializePool();
         StartSpawning();
     }
 
-    void CreatePool()
+    void InitializePool()
     {
-        obstaclePool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(obstaclePrefab);
+            GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+            GameObject obj = Instantiate(prefab);
             obj.SetActive(false);
             obstaclePool.Add(obj);
         }
@@ -42,32 +37,27 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator StartSpawn()
     {
+        yield return new WaitForSeconds(spawnRate);
         while (true)
         {
             Spawn();
             yield return new WaitForSeconds(spawnRate);
-            if (spawnRate > minSpawnRate)
-            {
-                spawnRate -= spawnRateDecrease;
-            }
         }
     }
 
     void Spawn()
     {
-        GameObject obj = GetPooledObstacle();
-        if (obj != null)
+        GameObject obstacle = GetPooledObject();
+        if (obstacle != null)
         {
-            obj.transform.position = new Vector3(
-                Random.Range(minX.position.x, maxX.position.x),
-                transform.position.y,
-                transform.position.z
-            );
-            obj.SetActive(true);
+            Vector3 spawnPosition = new Vector3(Random.Range(minX.position.x, maxX.position.x), transform.position.y, transform.position.z);
+            obstacle.transform.position = spawnPosition;
+            obstacle.transform.rotation = Quaternion.identity;
+            obstacle.SetActive(true);
         }
     }
 
-    GameObject GetPooledObstacle()
+    GameObject GetPooledObject()
     {
         foreach (GameObject obj in obstaclePool)
         {
@@ -75,8 +65,9 @@ public class ObstacleSpawner : MonoBehaviour
                 return obj;
         }
 
-        // Expand pool si hace falta
-        GameObject newObj = Instantiate(obstaclePrefab);
+        // Si todos están activos, opcionalmente instanciamos uno nuevo
+        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject newObj = Instantiate(prefab);
         newObj.SetActive(false);
         obstaclePool.Add(newObj);
         return newObj;
@@ -84,7 +75,6 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void StopSpawning()
     {
-        if (spawnCoroutine != null)
-            StopCoroutine(spawnCoroutine);
+        StopCoroutine(spawnCoroutine);
     }
 }

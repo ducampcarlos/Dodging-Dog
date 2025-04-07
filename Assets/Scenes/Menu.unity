@@ -291,18 +291,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1959888308492919288, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
-      propertyPath: poolSize
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3567025477522883768, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 74ccac181d657774983d4404ffb5ac0d, type: 3}
-    - target: {fileID: 3567025477522883768, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 74ccac181d657774983d4404ffb5ac0d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

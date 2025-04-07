@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 371cb2b1666c6e445ad3c69bdb1a1241, type: 2}
+  poolSize: 10
 --- !u!82 &3567025477522883768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56,8 +57,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1985776666681331616, guid: 371cb2b1666c6e445ad3c69bdb1a1241, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4d0c028418748f54186c4fc41ed69414, type: 3}
-  m_Resource: {fileID: 8300000, guid: 4d0c028418748f54186c4fc41ed69414, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74ccac181d657774983d4404ffb5ac0d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 74ccac181d657774983d4404ffb5ac0d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1

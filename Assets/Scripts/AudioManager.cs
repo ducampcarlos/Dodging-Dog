@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
     [Header("Mixer")]
-    [SerializeField] private AudioMixer audioMixer; // Asignalo desde el Inspector
+    [SerializeField] private AudioMixer audioMixer;
+
+    [Header("Audio Pool")]
+    [SerializeField] private int poolSize = 10;
+    private List<AudioSource> sfxPool = new List<AudioSource>();
+    private int poolIndex = 0;
 
     private const string SFX_PARAM = "SFX";
     private const string MUSIC_PARAM = "Music";
@@ -37,6 +43,32 @@ public class AudioManager : MonoBehaviour
 
         SetVolume(SFX_PARAM, isSFXMuted);
         SetVolume(MUSIC_PARAM, isMusicMuted);
+
+        InitSFXPool();
+    }
+
+    private void InitSFXPool()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject go = new GameObject("SFX_AudioSource_" + i);
+            go.transform.parent = transform;
+            AudioSource source = go.AddComponent<AudioSource>();
+            source.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
+            sfxPool.Add(source);
+        }
+    }
+
+    public void PlaySFX(AudioClip clip, float volume = 0.5f)
+    {
+        if (isSFXMuted || clip == null) return;
+
+        AudioSource source = sfxPool[poolIndex];
+        source.clip = clip;
+        source.volume = volume;
+        source.Play();
+
+        poolIndex = (poolIndex + 1) % sfxPool.Count;
     }
 
     public void ToggleSFX()

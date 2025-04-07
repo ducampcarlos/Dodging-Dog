@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerController playerController;
 
+    [SerializeField] AudioClip button;
+
     private void Awake()
     {
         if (instance == null)
@@ -29,19 +31,12 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-
     public void GameOver()
     {
         gameOver = true;
         obstacleSpawner.StopSpawning();
         gameOverPanel.SetActive(true);
+        playerController.PlayParticleDeath();
         playerController.enabled = false;
     }
 
@@ -56,11 +51,13 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        AudioManager.Instance.PlaySFX(button);
         SceneManager.LoadScene("Game");
     }
 
     public void MainMenu()
     {
+        AudioManager.Instance.PlaySFX(button);
         SceneManager.LoadScene("Menu");
     }
 }

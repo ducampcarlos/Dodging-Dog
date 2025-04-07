@@ -166,3 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
+  sawFall: {fileID: 8300000, guid: 13aed35a89a38ca46be12d17413cef28, type: 3}
+  sawHit: {fileID: 8300000, guid: b1864bbdc6f3e334492c6bc0d053e051, type: 3}
+  playerDeath: {fileID: 8300000, guid: b3615b23138c2a54089eb60ba20ff8af, type: 3}

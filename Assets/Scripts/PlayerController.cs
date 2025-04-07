@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     SpriteRenderer sr;
     Animator anim;
+    [SerializeField] ParticleSystem deathParticle;
 
     private void Awake()
     {
@@ -57,5 +58,15 @@ public class PlayerController : MonoBehaviour
 
 
         rb.linearVelocity = moveDirection * speed;
+    }
+
+    public void PlayParticleDeath()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        if (deathParticle != null)
+        {
+            deathParticle.Play();
+        }
     }
 }

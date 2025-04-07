@@ -4,17 +4,18 @@ using UnityEngine.Rendering;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 10f;
+    [SerializeField] AudioClip sawFall;
+    [SerializeField] AudioClip sawHit;
+    [SerializeField] AudioClip playerDeath;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
-        
+        Invoke("PlaySawSound", 1.1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlaySawSound()
     {
-        
+        AudioManager.Instance.PlaySFX(sawFall);
     }
 
     private void FixedUpdate()
@@ -28,11 +29,14 @@ public class Obstacle : MonoBehaviour
         {
             GameManager.instance.IncrementScore();
 
+            AudioManager.Instance.PlaySFX(sawHit);
+
             Destroy(gameObject);
         }
 
         if(collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(playerDeath);
             GameManager.instance.GameOver();
         }
     }

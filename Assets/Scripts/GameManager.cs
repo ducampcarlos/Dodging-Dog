@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] ObstacleSpawner obstacleSpawner;
+    [SerializeField] PowerUpSpawner powerUpSpawner;
 
     int score = 0;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         obstacleSpawner.StopSpawning();
+        powerUpSpawner.StopSpawning();
         gameOverPanel.SetActive(true);
         playerController.PlayParticleDeath();
         playerController.enabled = false;

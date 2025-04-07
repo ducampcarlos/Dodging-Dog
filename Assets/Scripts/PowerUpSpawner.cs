@@ -44,6 +44,20 @@ public class PowerUpSpawner : MonoBehaviour
         GameObject powerUp = GetPooledObject();
         if (powerUp != null)
         {
+            // Seleccionar prefab aleatorio y reasignar si es diferente
+            GameObject selectedPrefab = powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];
+
+            if (powerUp.name.StartsWith(selectedPrefab.name) == false)
+            {
+                // Reemplazamos el objeto del pool por uno del tipo correcto
+                int index = powerUpPool.IndexOf(powerUp);
+                GameObject newObj = Instantiate(selectedPrefab);
+                newObj.SetActive(false);
+                Destroy(powerUp); // Limpia el anterior
+                powerUpPool[index] = newObj;
+                powerUp = newObj;
+            }
+
             Vector3 spawnPosition = new Vector3(Random.Range(minX.position.x, maxX.position.x), transform.position.y, transform.position.z);
             powerUp.transform.position = spawnPosition;
             powerUp.transform.rotation = Quaternion.identity;

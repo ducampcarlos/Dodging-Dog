@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class PowerUpBase : MonoBehaviour
 {
     public float fallSpeed = 1f;
+    [SerializeField] private AudioClip powerUpSound;
 
     private void Update()
     {
@@ -14,6 +15,7 @@ public abstract class PowerUpBase : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ApplyEffect(other.GetComponent<PlayerController>());
+            AudioManager.Instance.PlaySFX(powerUpSound);
             gameObject.SetActive(false);
         }
 

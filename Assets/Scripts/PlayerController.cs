@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     [SerializeField] ParticleSystem deathParticle;
 
+    public bool hasShield = false;
+
+    [SerializeField] GameObject shieldVisual;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,5 +72,19 @@ public class PlayerController : MonoBehaviour
         {
             deathParticle.Play();
         }
+    }
+
+    public void ActivateShield()
+    {
+        hasShield = true;
+        if (shieldVisual != null)
+            shieldVisual.SetActive(true);
+    }
+
+    public void ConsumeShield()
+    {
+        hasShield = false;
+        if (shieldVisual != null)
+            shieldVisual.SetActive(false);
     }
 }

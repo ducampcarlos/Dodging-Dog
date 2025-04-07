@@ -34,13 +34,24 @@ public class Obstacle : MonoBehaviour
         {
             GameManager.instance.IncrementScore();
             AudioManager.Instance.PlaySFX(sawHit);
-            gameObject.SetActive(false); // Reutilizable
+            gameObject.SetActive(false);
         }
 
         if (collision.CompareTag("Player"))
         {
+            PlayerController player = collision.GetComponent<PlayerController>();
+            if (player != null && player.hasShield)
+            {
+                AudioManager.Instance.PlaySFX(sawHit);
+                player.ConsumeShield();
+                gameObject.SetActive(false); // destruir obstáculo
+                return;
+            }
+
             AudioManager.Instance.PlaySFX(playerDeath);
             GameManager.instance.GameOver();
         }
+
+
     }
 }

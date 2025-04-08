@@ -1166,11 +1166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488dd8d0cd0356d4e9f718a82754fb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
+  normalSawVariants:
   - {fileID: 1230387751490760155, guid: f5dfd30a6aedc1b48ba0b0678c67232e, type: 3}
   - {fileID: 5289452195992161227, guid: 3c87fcef06c1cde478b125cbbd2b7136, type: 3}
   - {fileID: 3792597152828349429, guid: 88c56e90cb7f0d247a0ac2e5299bc735, type: 3}
   - {fileID: 1133359580357366450, guid: 14038bf8c8a1ed4408f9ee903fdc28f7, type: 3}
+  zigzagSawPrefab: {fileID: 8330313449408639897, guid: af9d4234cb33ab8419095413c99edaa9, type: 3}
+  ghostSawPrefab: {fileID: 6393919501279805694, guid: e7907c0095499e441a95ec1e064a022a, type: 3}
   spawnRate: 1
   minX: {fileID: 1500331115}
   maxX: {fileID: 668231920}

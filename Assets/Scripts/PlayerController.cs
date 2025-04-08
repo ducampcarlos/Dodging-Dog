@@ -51,12 +51,17 @@ public class PlayerController : MonoBehaviour
             float touchX = Touchscreen.current.primaryTouch.position.x.ReadValue();
             moveDirection = (touchX < Screen.width / 2f) ? Vector2.left : Vector2.right;
         }
+
 #elif UNITY_STANDALONE || UNITY_EDITOR
         // PC Controls (Mouse)
         if (Mouse.current.leftButton.isPressed)
         {
             float mouseX = Mouse.current.position.x.ReadValue();
             moveDirection = (mouseX < Screen.width / 2f) ? Vector2.left : Vector2.right;
+        }
+        else
+        {
+            moveDirection = Vector2.zero;
         }
 #endif
 

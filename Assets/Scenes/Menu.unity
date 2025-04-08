@@ -954,9 +954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Endless
-
-    Dodge'
+  m_text: Dogdge
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb3f5b1bc815c1847887e99f6028ed41, type: 2}
   m_sharedMaterial: {fileID: 4682885010909572189, guid: eb3f5b1bc815c1847887e99f6028ed41, type: 2}
